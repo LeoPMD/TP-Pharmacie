@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Medicament {
 
+	public static Scanner sc = new Scanner(System.in);
+
 	private int id;
 	private String nom;
 	private double prix;
 	private int stock;
 
-	
- 
-    public Medicament() {
-    }
-    
+	public Medicament() {
+	}
+
 	public Medicament(int id, String nom, double prix, int stock) {
 		super();
 		this.id = id;
@@ -21,8 +21,27 @@ public class Medicament {
 		this.prix = prix;
 		this.stock = stock;
 	}
-    
-    
+
+	public static Medicament lireMedicament() {
+		System.out.print("Veuillez renseigner le nom du medicament (avec une majuscule) : ");
+		String findMedicament = sc.next();
+		boolean verificationMedicament = false;
+
+		for (int ii = 0; ii < Main.listeMedicament.size(); ii++) {
+			if (Main.listeMedicament.get(ii).getNom().contains(findMedicament)) {
+				verificationMedicament = true;
+				return Main.listeMedicament.get(ii);
+
+			}
+		}
+
+		if (verificationMedicament == false) {
+			System.out.println("Le medicament renseigné n'est pas trouvable !\n");
+			System.out.println("Retour au menu\n");
+			Main.menu();
+		}
+		return null;
+	}
 
 	public String getNom() {
 		return nom;
@@ -56,22 +75,9 @@ public class Medicament {
 		this.stock = stock;
 	}
 
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		return "Medicament [id=" + id + ", nom=" + nom + ", prix=" + prix + ", stock=" + stock + "]";
 	}
 
-
-
-
-
-
-	
-	
-	
-    
 }
