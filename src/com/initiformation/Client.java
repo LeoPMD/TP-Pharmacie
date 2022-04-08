@@ -51,10 +51,10 @@ public class Client {
 				Main.listeClient.add(c1);
 				
 				System.out.println("Le client " + findClient + " a bien été enregistré !\n");
-				
-			
 
-				break;
+				
+				return c1;
+				
 
 			case 2:
 				Main.menu();
